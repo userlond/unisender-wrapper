@@ -43,7 +43,7 @@ abstract class BaseUniSenderWrapper
      * @param array $params
      * @return array
      */
-    abstract public function sendQuery($methodName, array $params = []);
+    abstract public function sendQuery($methodName, array $params = array());
 
     /**
      * @return string
@@ -60,9 +60,9 @@ abstract class BaseUniSenderWrapper
     {
         if ($this->encoding != 'UTF8') {
             if (function_exists('iconv')) {
-                array_walk_recursive($params, [$this, 'iconv']);
+                array_walk_recursive($params, array($this, 'iconv'));
             } else if (function_exists('mb_convert_encoding')) {
-                array_walk_recursive($params, [$this, 'mb_convert_encoding']);
+                array_walk_recursive($params, array($this, 'mb_convert_encoding'));
             }
         }
     }

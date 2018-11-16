@@ -41,7 +41,7 @@ class UniOneWrapper extends BaseUniSenderWrapper
      * @param array $params
      * @return mixed
      */
-    public function listTemplates($params = [])
+    public function listTemplates($params = array())
     {
         return $this->sendQuery("transactional/api/v1/template/list.json", $params);
     }
@@ -111,7 +111,7 @@ class UniOneWrapper extends BaseUniSenderWrapper
      * @param $params
      * @return array
      */
-    public function getCheckedEmail($params = [])
+    public function getCheckedEmail($params = array())
     {
         $params['login'] = $this->userName;
         return $this->sendQuery("api/getCheckedEmail", $params);
@@ -122,7 +122,7 @@ class UniOneWrapper extends BaseUniSenderWrapper
      * @param array $params
      * @return array
      */
-    public function sendQuery($methodName, array $params = [])
+    public function sendQuery($methodName, array $params = array())
     {
         $this->convertParamsEncoding($params);
         $params['api_key'] = $this->apiKey;
@@ -147,7 +147,7 @@ class UniOneWrapper extends BaseUniSenderWrapper
 
         return $result !== false ? json_decode($result, true) : null;
     }
-    
+
     /**
      * @return string
      */

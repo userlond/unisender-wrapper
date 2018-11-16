@@ -13,7 +13,7 @@ class UniSenderWrapper extends BaseUniSenderWrapper
     public function __call($name, $arguments)
     {
         if (!is_array($arguments) || empty($arguments)) {
-            $params = [];
+            $params = array();
         } else {
             $params = $arguments[0];
         }
@@ -42,7 +42,7 @@ class UniSenderWrapper extends BaseUniSenderWrapper
      * @throws \Exception
      * @return array
      */
-    public function subscribe($list_ids, array $fields, $params = [])
+    public function subscribe($list_ids, array $fields, $params = array())
     {
         $params['list_ids'] = $list_ids;
 
@@ -60,17 +60,17 @@ class UniSenderWrapper extends BaseUniSenderWrapper
      * @param array $params
      * @return array
      */
-    public function sendQuery($methodName, array $params = [])
+    public function sendQuery($methodName, array $params = array())
     {
         $this->convertParamsEncoding($params);
         $params['api_key'] = $this->apiKey;
         $body = http_build_query($params);
 
         $getParams = http_build_query(
-            [
+            array(
                 'format' => 'json',
                 'test_mode' => (int)$this->testMode
-            ]
+            )
         );
 
         $ch = curl_init();
